@@ -1,0 +1,10 @@
+*.pptx
+*.svg
+*.bmp
+# Ignore stray PNGs but keep the bundled icon
+*.png
+!assets/icon.png
+__pycache__/
+*.pyc
+.DS_Store
+._*

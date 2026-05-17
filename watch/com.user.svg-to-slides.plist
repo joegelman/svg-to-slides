@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template — install.sh substitutes __USER__ before copying to ~/Library/LaunchAgents/ -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.__USER__.svg-to-slides</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/sh</string>
+        <string>/Users/__USER__/Library/Scripts/svg_to_slides_watch.sh</string>
+    </array>
+
+    <key>StartInterval</key>
+    <integer>5</integer>
+    <key>ThrottleInterval</key>
+    <integer>1</integer>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/svg-to-slides.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/svg-to-slides.log</string>
+</dict>
+</plist>
