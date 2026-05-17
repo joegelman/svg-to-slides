@@ -1,4 +1,4 @@
-![svg-to-slides_icon](https://github.com/joegelman/svg-to-g-slides/blob/main/assets/icon_new.png)
+![svg-to-slides_icon](https://github.com/joegelman/svg-to-g-slides/blob/main/assets/icon_desc.png)
 # svg-to-slides
 
 Convert SVG files to editable vector shapes for use in Google Slides.
