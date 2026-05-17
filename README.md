@@ -54,7 +54,7 @@ Terminal opens, installs Python deps locally (no `sudo`, no `--break-system-pack
 From the command line:
 
 ```sh
-git clone https://github.com/you/svg-to-slides.git
+git clone https://github.com/joegelman/svg-to-slides.git
 cd svg-to-slides
 ./install.sh   # thin wrapper around Install.command
 ```
