@@ -1,7 +1,6 @@
 # svg-to-slides
 
-Convert SVG files to editable vector shapes in Google Slides.  
-No OAuth. No API keys. No Keynote detour.
+Convert SVG files to editable vector shapes for use in Google Slides.
 
 **github.com/joegelman/svg-to-slides** · glmn.co
 
@@ -19,7 +18,7 @@ png_to_svg.sh FILE [FILE ...]
 
 ## DESCRIPTION
 
-`svg_to_slides.py` reads one or more SVG files and writes a PPTX where each SVG occupies one slide. Every `<path>` element becomes a discrete DrawingML `<a:custGeom>` shape with a tight bounding box — individually selectable and editable after import into Google Slides.
+`svg_to_slides.py` reads one or more SVG files and writes a PPTX where each converted SVG occupies one slide. Every `<path>` element becomes a discrete DrawingML `<a:custGeom>` shape with a tight bounding box — individually selectable and editable after import into Google Slides.
 
 A launchd agent polls a drop folder every 5 seconds. SVGs placed there are converted and the resulting PPTX is moved into Google Drive automatically.
 
@@ -45,7 +44,7 @@ What it does:
 - Creates the drop folder and loads the launchd agent
 - Adds a Desktop alias pointing at the drop folder
 
-**Dependencies:** Python 3, pip3 (Xcode CLT). For PNG tracing: `brew install imagemagick potrace`.
+**Dependencies:** Python 3, pip3 (Xcode CLT). For PNG tracing: `brew install imagemagick potrace`. ***Google Drive for Desktop installed** and logged in on your machine.*
 
 ---
 
@@ -132,7 +131,7 @@ Leaves `svg-to-slides-drop/` and `svg-to-slides.conf` in place. Remove manually 
 
 Folder Actions and `WatchPaths` are silently broken on macOS Sequoia. `StartInterval` polling is used instead.
 
-macOS TCC blocks launchd from reading `~/Documents`, `~/Desktop`, and `~/Library/CloudStorage`. The drop folder lives in `~/Library/Application Support/` where launchd has access. The watcher writes PPTX output to Drive via `mv`; write access to CloudStorage is permitted even when read is blocked.
+macOS TCC blocks launchd from reading `~/Documents`, `~/Desktop`, and `~/Library/CloudStorage`. The drop folder lives in `~/Library/Application Support/` where launchd has access. The watcher writes PPTX output to Drive via `mv`; **write access to CloudStorage is permitted even when read is blocked.**
 
 Arc commands (`A`/`a`) in SVG paths fall back to straight lines. Re-export with more path segments if arcs appear angular.
 
