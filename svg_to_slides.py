@@ -331,7 +331,12 @@ def convert(svg_files):
         print(f'  + {p.name}')
 
     first = Path(svg_files[0])
-    out = first.with_suffix('.pptx') if len(svg_files) == 1 else first.parent / 'slides.pptx'
+    base = first.with_suffix('.pptx') if len(svg_files) == 1 else first.parent / 'slides.pptx'
+    out = base
+    n = 2
+    while out.exists():
+        out = base.parent / f'{base.stem} {n}{base.suffix}'
+        n += 1
     prs.save(str(out))
     print(f'✓ {out}')
 

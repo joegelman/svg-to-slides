@@ -103,23 +103,14 @@ launchctl unload "$PLIST" 2>/dev/null || true
 launchctl load "$PLIST"
 echo "✓ Background agent loaded (polls every 5 s)"
 
-# ── Desktop alias ─────────────────────────────────────────────────────────────
+# ── Desktop shortcut (symlink — Finder aliases misresolve on some systems) ────
 
 ALIAS="$HOME/Desktop/SVG to Slides Drop"
 if [[ ! -e "$ALIAS" ]]; then
-  osascript - "$DROP_DIR" "$ALIAS" <<'SCPT'
-on run {drop_dir, alias_path}
-  set src to POSIX file drop_dir as alias
-  set dst_parent to POSIX file (do shell script "dirname " & quoted form of alias_path) as alias
-  set alias_name to do shell script "basename " & quoted form of alias_path
-  tell application "Finder"
-    make alias file to src at dst_parent with properties {name:alias_name}
-  end tell
-end run
-SCPT
-  echo "✓ Desktop alias created"
+  ln -s "$DROP_DIR" "$ALIAS"
+  echo "✓ Desktop shortcut created"
 else
-  echo "✓ Desktop alias already exists (skipped)"
+  echo "✓ Desktop shortcut already exists (skipped)"
 fi
 
 echo ""
